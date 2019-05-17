@@ -1,6 +1,42 @@
 # Sites Monitoring Utility
 
-[TODO. There will be project description]
+
+Checks the domains of the site. 
+Has the domain been paid for at least 30 days. 
+And whether the url of the site will respond with code 200.
+
+# Description
+
+As a parameter, a text file with the addresses of sites is transmitted. 
+Each new address is written on a new line.
+
+```text
+# Example *.txt file
+mail.ru
+google.ru
+yandex.ru
+test_tt.ru
+```
+
+# Example
+
+```bash
+$ python check_sites.py urls.txt# possibly requires call of python3 executive instead of just python\
+
+   URL: mail.ru
+   Code 200: True
+   Domain paid: True
+   
+   URL: yandex.ru
+   Code 200: True
+   Domain paid: True
+
+   URL: test_tt.ru
+   Code 200: False
+   Domain paid: False
+    
+```
+Running on Windows is similar.
 
 # Project Goals
 
