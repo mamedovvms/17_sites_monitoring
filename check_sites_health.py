@@ -29,9 +29,9 @@ def get_valid_url(url):
 def is_server_respond_with_200(url):
     try:
         response = requests.get(get_valid_url(url))
-    except:
+    except requests.exceptions.ConnectionError:
         return False
-    return response.status_code == 200
+    return response.ok
 
 
 def get_domain_expiration_date(domain_name):
