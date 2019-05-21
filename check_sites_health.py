@@ -64,7 +64,7 @@ def main():
                 is_expiration_date_valid(expiration_date, params.delta)
             ))
         except requests.exceptions.MissingSchema:
-            print(f"\nInvalid URL {url}")
+            print(f"\nInvalid URL '{url}'")
 
 
 if __name__ == '__main__':
