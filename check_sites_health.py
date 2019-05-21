@@ -40,7 +40,6 @@ def get_domain_expiration_date(domain_name):
 
 
 def is_expiration_date_valid(expiration_date, delta):
-    temp = '# Я не понимаю почему здесь должен быть список?'
     if not expiration_date or \
             not isinstance(expiration_date, datetime):
         return False
