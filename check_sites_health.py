@@ -67,6 +67,5 @@ def main():
             print(f"\nInvalid URL {url}")
 
 
-
 if __name__ == '__main__':
     main()
