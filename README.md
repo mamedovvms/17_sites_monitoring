@@ -1,40 +1,44 @@
 # Sites Monitoring Utility
 
 
-Checks the domains of the site. 
-Has the domain been paid for at least 30 days. 
-And whether the url of the site will respond with code 200.
+Checks the domains of the site.
+Whether the domain has been paid for the transferred number of days.
+And shows the server's response to the request .
 
 # Description
 
 As a parameter, a text file with the addresses of sites is transmitted. 
 Each new address is written on a new line.
-
+The second parameter is the number of days for which you want to check payment.
 ```text
 # Example *.txt file
-mail.ru
-google.ru
-yandex.ru
-test_tt.ru
+http://mail.ru
+http://google.ru
+http://yandex.ru
+http://test_tt.ru
 ```
 
 # Example
 
 ```bash
-$ python check_sites.py urls.txt# possibly requires call of python3 executive instead of just python\
+$ python check_sites.py urls.txt -d 30# possibly requires call of python3 executive instead of just python\
 
-   URL: mail.ru
-   Code 200: True
+   URL: http://mail.ru
+   Server response: 200
+   Domain paid: True
+
+   URL: http://google.ru
+   Server response: 200
+   Domain paid: True
+
+   URL: yandex.ru
+   Server response: Invalid URL
    Domain paid: True
    
-   URL: yandex.ru
-   Code 200: True
-   Domain paid: True
-
-   URL: test_tt.ru
-   Code 200: False
+   URL: http://test_tt.ru
+   Server response: Error connection
    Domain paid: False
-    
+       
 ```
 Running on Windows is similar.
 
