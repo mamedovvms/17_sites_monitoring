@@ -8,7 +8,7 @@ import os
 def get_cmd_params():
     parser = argparse.ArgumentParser()
     parser.add_argument('fileurls', help='File site url')
-    parser.add_argument('-d', '--delta', type=int, help='Paid period in days')
+    parser.add_argument('-d', '--delta', default=30, type=int, help='Paid period in days')
     params = parser.parse_args()
 
     if not params.delta or params.delta < 0:
@@ -40,11 +40,14 @@ def get_domain_expiration_date(domain_name):
 
 
 def is_expiration_date_valid(expiration_date, delta):
-    #не могу понять почему здесь должен быть список
-    if not expiration_date or not isinstance(expiration_date, datetime):
+    if not expiration_date:
         return False
+    if isinstance(expiration_date, list):
+        expiration_date_for_commare = expiration_date[0]
+    else:
+        expiration_date_for_commare = expiration_date
     today = datetime.utcnow()
-    return expiration_date >= today + timedelta(days=delta)
+    return expiration_date_for_commare >= today + timedelta(days=delta)
 
 
 def main():
