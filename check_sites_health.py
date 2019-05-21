@@ -40,8 +40,7 @@ def get_domain_expiration_date(domain_name):
 
 
 def is_expiration_date_valid(expiration_date, delta):
-    if not expiration_date or \
-            not isinstance(expiration_date, datetime):
+    if not expiration_date or not isinstance(expiration_date, datetime):
         return False
     today = datetime.utcnow()
     return expiration_date >= today + timedelta(days=delta)
