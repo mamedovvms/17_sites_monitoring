@@ -49,9 +49,9 @@ def is_expiration_date_valid(expiration_date, delta):
 
 def main():
     template_print = '''
-URL: {}
-Server response: {}
-Domain paid: {}'''
+    URL: {}
+    Server response: {}
+    Domain paid: {}'''
     params = get_cmd_params()
 
     urls = load_urls4check(params.fileurls)
