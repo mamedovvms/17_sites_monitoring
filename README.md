@@ -1,8 +1,7 @@
 # Sites Monitoring Utility
 
-
 Checks the domains of the site.
-Whether the domain has been paid for the transferred number of days.
+Whether the domain has been paid for the transferred number of days, default 30 days.
 And shows the server's response to the request .
 
 # Description
