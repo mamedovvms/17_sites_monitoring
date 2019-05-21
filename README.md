@@ -24,20 +24,19 @@ http://test_tt.ru
 $ python check_sites.py urls.txt -d 30# possibly requires call of python3 executive instead of just python\
 
    URL: http://mail.ru
-   Server response: 200
-   Domain paid: True
+Server response: True
+Domain paid: True
 
-   URL: http://google.ru
-   Server response: 200
-   Domain paid: True
+URL: http://google.ru
+Server response: True
+Domain paid: True
 
-   URL: yandex.ru
-   Server response: Invalid URL
-   Domain paid: True
-   
-   URL: http://test_tt.ru
-   Server response: Error connection
-   Domain paid: False
+Invalid URL yandex.ru
+
+URL: http://test_tt.ru
+Server response: False
+Domain paid: False
+
        
 ```
 Running on Windows is similar.

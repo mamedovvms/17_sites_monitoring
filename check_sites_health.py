@@ -26,14 +26,12 @@ def load_urls4check(path):
     return urls_check
 
 
-def get_server_response(url):
+def is_server_respond_with_ok(url):
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
-        return 'Error connection'
-    except requests.exceptions.MissingSchema:
-        return 'Invalid URL'
-    return response.status_code
+        return False
+    return response.ok
 
 
 def get_domain_expiration_date(domain_name):
@@ -42,6 +40,7 @@ def get_domain_expiration_date(domain_name):
 
 
 def is_expiration_date_valid(expiration_date, delta):
+    # Я не понимаю почему здесь должен быть списко???
     if not expiration_date or \
             not isinstance(expiration_date, datetime):
         return False
@@ -51,19 +50,23 @@ def is_expiration_date_valid(expiration_date, delta):
 
 def main():
     template_print = '''
-    URL: {}
-    Server response: {}
-    Domain paid: {}'''
+URL: {}
+Server response: {}
+Domain paid: {}'''
     params = get_cmd_params()
 
     urls = load_urls4check(params.fileurls)
     for url in urls:
         expiration_date = get_domain_expiration_date(url)
-        print(template_print.format(
-            url,
-            get_server_response(url),
-            is_expiration_date_valid(expiration_date, params.delta)
-        ))
+        try:
+            print(template_print.format(
+                url,
+                is_server_respond_with_ok(url),
+                is_expiration_date_valid(expiration_date, params.delta)
+            ))
+        except requests.exceptions.MissingSchema:
+            print(f"\nInvalid URL {url}")
+
 
 
 if __name__ == '__main__':
